@@ -15,6 +15,7 @@ const CalendarScreen: React.FC = () => {
   >({});
 
   const handleSelectDate = (date: DateData) => {
+    console.log('pressed');
     setSelectedDate(date);
     setBottomSheetVisible(true);
   };

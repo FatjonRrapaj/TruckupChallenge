@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback} from 'react';
 import {Dimensions, StyleSheet} from 'react-native';
 import {CalendarList, DateData} from 'react-native-calendars';
 import {format} from 'date-fns';
@@ -12,16 +12,12 @@ interface CalendarProps {
 }
 
 const Calendar: React.FC<CalendarProps> = ({onSelectDate}) => {
-  const [_, setSelectedDate] = useState<string | null>(null);
-
-  const handleDayPress = (date: DateData) => {
-    setSelectedDate(date.dateString);
-    onSelectDate(date);
-  };
-
-  const onDayPress = useCallback((date: DateData) => {
-    setSelectedDate(date.dateString);
-  }, []);
+  const onDayPress = useCallback(
+    (date: DateData) => {
+      onSelectDate(date);
+    },
+    [onSelectDate],
+  );
 
   const dayComponent = useCallback(
     (
@@ -45,7 +41,7 @@ const Calendar: React.FC<CalendarProps> = ({onSelectDate}) => {
         pastScrollRange={0}
         hideExtraDays={true}
         snapToAlignment="center"
-        onDayPress={handleDayPress}
+        onDayPress={onDayPress}
         calendarWidth={Dimensions.get('screen').width}
         disableArrowLeft={true}
         // markedDates={{

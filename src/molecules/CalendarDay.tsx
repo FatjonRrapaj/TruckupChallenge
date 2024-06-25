@@ -20,6 +20,7 @@ const CalendarDay: React.FC<
 > = memo(
   ({
     date,
+    onDayPress,
     // onSelect,
     // isSelected,
   }) => {
@@ -47,7 +48,10 @@ const CalendarDay: React.FC<
     ];
 
     return (
-      <TouchableOpacity style={[styles.container, {width: dayWidth}]}>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        onPress={() => onDayPress(date)}
+        style={[styles.container, {width: dayWidth}]}>
         <View style={innerDayContainerStyle as ViewStyle}>
           <TextAtom style={dayTextStyle as ViewStyle}>
             {format(date.timestamp, 'd')}
