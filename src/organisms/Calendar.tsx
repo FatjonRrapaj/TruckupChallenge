@@ -1,5 +1,5 @@
 import React, {useCallback, useState} from 'react';
-import {Dimensions} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 import {CalendarList, DateData} from 'react-native-calendars';
 import {format} from 'date-fns';
 import CalendarHeader from '../molecules/CalendarHeader';
@@ -8,15 +8,15 @@ import {Colors} from '../constants/colors';
 import {DayProps} from 'react-native-calendars/src/calendar/day';
 
 interface CalendarProps {
-  onSelectDate: (date: Date) => void;
+  onSelectDate: (date: DateData) => void;
 }
 
 const Calendar: React.FC<CalendarProps> = ({onSelectDate}) => {
   const [_, setSelectedDate] = useState<string | null>(null);
 
-  const handleDayPress = (day: DateData) => {
-    setSelectedDate(day.dateString);
-    onSelectDate(new Date(day.dateString));
+  const handleDayPress = (date: DateData) => {
+    setSelectedDate(date.dateString);
+    onSelectDate(date);
   };
 
   const onDayPress = useCallback((date: DateData) => {
@@ -53,7 +53,7 @@ const Calendar: React.FC<CalendarProps> = ({onSelectDate}) => {
         //     selected: true,
         //   },
         // }}
-        style={{height: 320}}
+        style={styles.calendar}
         dayComponent={dayComponent}
         hideDayNames
         theme={{
@@ -74,5 +74,9 @@ const Calendar: React.FC<CalendarProps> = ({onSelectDate}) => {
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  calendar: {height: 320},
+});
 
 export default Calendar;

@@ -5,23 +5,28 @@ import BottomSheet from '../organisms/BottomSheet';
 import TextAtom from '../atoms/TextAtom';
 import Timezone from '../molecules/Timezone';
 import {Colors} from '../constants/colors';
+import {DateData} from 'react-native-calendars';
 
 const CalendarScreen: React.FC = () => {
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [selectedDate, setSelectedDate] = useState<DateData | null>(null);
   const [bottomSheetVisible, setBottomSheetVisible] = useState(false);
   const [_, setAvailability] = useState<
     Record<string, {startTime: string; endTime: string}>
   >({});
 
-  const handleSelectDate = (date: Date) => {
+  const handleSelectDate = (date: DateData) => {
     setSelectedDate(date);
     setBottomSheetVisible(true);
   };
 
-  const handleSaveTime = (date: Date, startTime: string, endTime: string) => {
+  const handleSaveTime = (
+    date: DateData,
+    startTime: string,
+    endTime: string,
+  ) => {
     setAvailability(prev => ({
       ...prev,
-      [date.toISOString().split('T')[0]]: {startTime, endTime},
+      [date.dateString]: {startTime, endTime},
     }));
     setBottomSheetVisible(false);
   };

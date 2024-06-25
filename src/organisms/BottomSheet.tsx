@@ -4,12 +4,13 @@ import BottomSheetHeader from '../molecules/BottomSheetHeader';
 import TimePicker from '../molecules/TimePicker';
 import ButtonAtom from '../atoms/ButtonAtom';
 import TextAtom from '../atoms/TextAtom';
+import {DateData} from 'react-native-calendars';
 
 interface BottomSheetProps {
   visible: boolean;
-  date: Date;
+  date: DateData;
   onClose: () => void;
-  onSave: (date: Date, startTime: string, endTime: string) => void;
+  onSave: (date: DateData, startTime: string, endTime: string) => void;
 }
 
 const BottomSheet: React.FC<BottomSheetProps> = ({
