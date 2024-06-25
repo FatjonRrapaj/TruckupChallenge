@@ -36,7 +36,7 @@ const TimePicker: React.FC<TimePickerProps> = ({
   };
 
   const renderTime = ({item}: ListRenderItemInfo<string>) => (
-    <TouchableOpacity style={styles.item}>
+    <TouchableOpacity activeOpacity={0.7} style={styles.item}>
       <Text style={styles.timeText}>{item}</Text>
     </TouchableOpacity>
   );

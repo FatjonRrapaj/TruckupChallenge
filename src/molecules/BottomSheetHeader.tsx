@@ -17,7 +17,7 @@ const BottomSheetHeader: React.FC<BottomSheetHeaderProps> = ({
   <View style={styles.container}>
     <View style={styles.bar} />
     <View style={styles.horizontalContainer}>
-      <TextAtom style={styles.title}>
+      <TextAtom fontWeight="bold" style={styles.title}>
         Set availability on {format(date.timestamp, 'MMM dd, yyyy')}
       </TextAtom>
       <TouchableOpacity
@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
     height: 73,
     borderTopColor: Colors.grayBorder,
     borderBottomColor: Colors.grayBorder,
-    borderWidth: 1,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
     paddingHorizontal: 20,
   },
   bar: {
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   title: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'bold',
   },
   closeButton: {padding: 4},

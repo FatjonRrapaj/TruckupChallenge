@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
     width: 35,
     justifyContent: 'center',
     alignItems: 'center',
-    //TODO: Colors
     borderRadius: 35 / 2,
   },
   todayContainer: {

@@ -31,7 +31,8 @@ const styles = StyleSheet.create({
   outerContainer: {
     borderTopColor: Colors.grayBorder,
     borderBottomColor: Colors.grayBorder,
-    borderWidth: 1,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
     paddingHorizontal: 20,
   },
   header: {

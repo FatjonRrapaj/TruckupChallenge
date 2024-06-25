@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, StyleSheet, Modal} from 'react-native';
 import BottomSheetHeader from '../molecules/BottomSheetHeader';
 import TimePicker from '../molecules/TimePicker';
-import ButtonAtom from '../atoms/ButtonAtom';
+import ButtonAtom from '../molecules/ButtonMolecule';
 import TextAtom from '../atoms/TextAtom';
 import {DateData} from 'react-native-calendars';
 import {Colors} from '../constants/colors';
@@ -23,19 +23,20 @@ const BottomSheet: React.FC<BottomSheetProps> = ({date, onClose, onSave}) => {
       <View style={styles.sheet}>
         <BottomSheetHeader date={date} onClose={onClose} />
         <View style={styles.timePicker}>
-          <TextAtom>Start work at:</TextAtom>
+          <TextAtom style={styles.startEndWork}>Start work at:</TextAtom>
           <TimePicker selectedTime={startTime} onSelectTime={setStartTime} />
         </View>
         <View style={styles.timePicker}>
-          <TextAtom>End work by:</TextAtom>
+          <TextAtom style={styles.startEndWork}>End work by:</TextAtom>
           <TimePicker selectedTime={endTime} onSelectTime={setEndTime} />
         </View>
-        <ButtonAtom
-          title="Set time"
-          onPress={() => onSave(date, startTime, endTime)}
-        />
+        <View style={styles.bottomSheetFooter}>
+          <ButtonAtom
+            title="Set time"
+            onPress={() => onSave(date, startTime, endTime)}
+          />
+        </View>
       </View>
-      {/* <TouchableOpacity style={styles.background} onPress={onClose} /> */}
     </Modal>
   );
 };
@@ -49,7 +50,11 @@ const styles = StyleSheet.create({
   sheet: {
     backgroundColor: Colors.grayBackgroundNonTransparent,
     height: '55%',
-    alignSelf: 'flex-end',
+    justifyContent: 'space-between',
+  },
+  startEndWork: {
+    marginLeft: 20,
+    fontSize: 14,
   },
   timePicker: {
     marginVertical: 10,
@@ -57,6 +62,11 @@ const styles = StyleSheet.create({
   background: {
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+  bottomSheetFooter: {
+    padding: 20,
+    borderTopColor: Colors.grayBorder,
+    borderTopWidth: 1,
   },
 });
 

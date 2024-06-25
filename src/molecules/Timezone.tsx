@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.grayBackground,
     borderTopColor: Colors.grayBorder,
     borderBottomColor: Colors.grayBorder,
-    borderWidth: 1,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
     marginTop: 30,
   },
 });
