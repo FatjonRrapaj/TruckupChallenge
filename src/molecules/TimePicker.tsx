@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import HapticFeedback from 'react-native-haptic-feedback';
 import HorizontalPicker from '@vseslav/react-native-horizontal-picker';
 import TextAtom from '../atoms/TextAtom';
@@ -16,36 +16,30 @@ const TimePicker: React.FC<TimePickerProps> = ({
   selectedTime,
   onSelectTime,
 }) => {
-  const times = Array.from({length: 48}, (_, i) => {
+  const times = Array.from({length: 96}, (_, i) => {
     const hour = Math.floor(i / 4);
     const minute = (i % 4) * 15;
+    const period = hour >= 12 ? 'pm' : 'am';
     const formattedHour = hour % 12 === 0 ? 12 : hour % 12;
-    return `${formattedHour.toString()}:${minute.toString().padStart(2, '0')}`;
+    return `${formattedHour}:${minute.toString().padStart(2, '0')} ${period}`;
   });
 
-  // Duplicate times array to create an infinite loop effect
-  const infiniteTimes = [...times, ...times, ...times];
-
   const handleChange = (change: any) => {
-    console.log('change: ', change);
-    const snappedTime = infiniteTimes[change % times.length];
-    console.log('snappedTime: ', snappedTime);
+    const snappedTime = times[change % times.length];
     onSelectTime(snappedTime);
     HapticFeedback.trigger('selection');
   };
 
   const renderTime = (item: string) => {
-    console.log('item: ', item);
     const isSelected = selectedTime === item;
-    const hour = Number(item.split(':')[0]);
-    const period = hour >= 12 ? 'pm' : 'am';
+    const [hourMinute, period] = item.split(' ');
 
     return (
       <View style={styles.item}>
         <TextAtom
           fontWeight="heavy"
           style={[styles.timeText, isSelected && {color: Colors.secondary}]}>
-          {item}
+          {hourMinute}
         </TextAtom>
         <TextAtom
           fontWeight="bold"
@@ -58,16 +52,15 @@ const TimePicker: React.FC<TimePickerProps> = ({
 
   // Calculate initial scroll index
   const selectedIndex = times.findIndex(time => time === selectedTime);
-  const initialIndex = selectedIndex + times.length; // Center in the middle set
 
   return (
     <View style={styles.container}>
       <HorizontalPicker
         bounces={false}
-        data={infiniteTimes}
+        data={times}
         renderItem={renderTime}
         animatedScrollToDefaultIndex
-        defaultIndex={initialIndex}
+        defaultIndex={selectedIndex}
         itemWidth={ITEM_WIDTH}
         onChange={position => {
           handleChange(position);
