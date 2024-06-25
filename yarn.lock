@@ -2996,6 +2996,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vseslav/react-native-horizontal-picker@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "@vseslav/react-native-horizontal-picker@npm:0.1.1"
+  checksum: 16aa2deee8394f263a05aeca07eec8a3b4f0834ef7c4b5a9a822bc31f58de4caa8192c8fdbd1cfe15b86e48ed53dc11978be2766affc69babec10b19d12b3977
+  languageName: node
+  linkType: hard
+
 "TruckupChallenge@workspace:.":
   version: 0.0.0-use.local
   resolution: "TruckupChallenge@workspace:."
@@ -3009,6 +3016,7 @@ __metadata:
     "@react-native/typescript-config": 0.74.84
     "@types/react": ^18.2.6
     "@types/react-test-renderer": ^18.0.0
+    "@vseslav/react-native-horizontal-picker": ^0.1.1
     babel-jest: ^29.6.3
     date-fns: ^3.6.0
     eslint: ^8.19.0

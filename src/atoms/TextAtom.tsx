@@ -8,18 +8,20 @@ const fontMappings = {
     bold: 'Lazzer-Bold',
     light: 'Lazzer-Light',
     semiBold: 'Lazzer-SemiBold',
+    heavy: 'Lazzer-Heavy',
   },
   firaCode: {
     regular: 'FiraCode-Regular',
     bold: 'FiraCode-Bold',
     light: 'FiraCode-Light',
     semiBold: 'FiraCode-SemiBold',
+    heavy: 'FiraCode-Bold',
   },
 };
 
 interface TextAtomProps extends TextProps {
   fontFamily?: 'lazzer' | 'firaCode';
-  fontWeight?: 'regular' | 'bold' | 'light' | 'semiBold';
+  fontWeight?: 'regular' | 'bold' | 'light' | 'semiBold' | 'heavy';
 }
 
 const TextAtom: React.FC<TextAtomProps> = ({
