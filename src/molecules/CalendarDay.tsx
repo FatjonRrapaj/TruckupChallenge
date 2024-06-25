@@ -84,7 +84,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     lineHeight: 16,
-    color: Colors.primary,
   },
   beforeText: {
     color: Colors.primaryDark,

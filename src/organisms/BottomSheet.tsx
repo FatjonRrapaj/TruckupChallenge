@@ -1,51 +1,41 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, Modal, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Modal} from 'react-native';
 import BottomSheetHeader from '../molecules/BottomSheetHeader';
 import TimePicker from '../molecules/TimePicker';
 import ButtonAtom from '../atoms/ButtonAtom';
 import TextAtom from '../atoms/TextAtom';
 import {DateData} from 'react-native-calendars';
+import {Colors} from '../constants/colors';
 
 interface BottomSheetProps {
-  visible: boolean;
   date: DateData;
   onClose: () => void;
   onSave: (date: DateData, startTime: string, endTime: string) => void;
 }
 
-const BottomSheet: React.FC<BottomSheetProps> = ({
-  visible,
-  date,
-  onClose,
-  onSave,
-}) => {
+const BottomSheet: React.FC<BottomSheetProps> = ({date, onClose, onSave}) => {
   const [startTime, setStartTime] = useState('06:00');
   const [endTime, setEndTime] = useState('20:00');
 
   return (
-    <Modal
-      visible={visible}
-      transparent
-      animationType="slide"
-      onRequestClose={onClose}>
-      <View style={styles.overlay}>
-        <View style={styles.sheet}>
-          <BottomSheetHeader date={date} />
-          <View style={styles.timePicker}>
-            <TextAtom>Start work at:</TextAtom>
-            <TimePicker selectedTime={startTime} onSelectTime={setStartTime} />
-          </View>
-          <View style={styles.timePicker}>
-            <TextAtom>End work by:</TextAtom>
-            <TimePicker selectedTime={endTime} onSelectTime={setEndTime} />
-          </View>
-          <ButtonAtom
-            title="Set time"
-            onPress={() => onSave(date, startTime, endTime)}
-          />
+    <Modal visible animationType="slide" transparent onRequestClose={onClose}>
+      <View style={styles.overlay} />
+      <View style={styles.sheet}>
+        <BottomSheetHeader date={date} onClose={onClose} />
+        <View style={styles.timePicker}>
+          <TextAtom>Start work at:</TextAtom>
+          <TimePicker selectedTime={startTime} onSelectTime={setStartTime} />
         </View>
+        <View style={styles.timePicker}>
+          <TextAtom>End work by:</TextAtom>
+          <TimePicker selectedTime={endTime} onSelectTime={setEndTime} />
+        </View>
+        <ButtonAtom
+          title="Set time"
+          onPress={() => onSave(date, startTime, endTime)}
+        />
       </View>
-      <TouchableOpacity style={styles.background} onPress={onClose} />
+      {/* <TouchableOpacity style={styles.background} onPress={onClose} /> */}
     </Modal>
   );
 };
@@ -54,12 +44,12 @@ const styles = StyleSheet.create({
   overlay: {
     flex: 1,
     justifyContent: 'flex-end',
+    backgroundColor: Colors.darkOverlay,
   },
   sheet: {
-    backgroundColor: 'white',
-    padding: 20,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    backgroundColor: Colors.grayBackgroundNonTransparent,
+    height: '55%',
+    alignSelf: 'flex-end',
   },
   timePicker: {
     marginVertical: 10,

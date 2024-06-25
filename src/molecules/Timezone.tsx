@@ -7,8 +7,8 @@ import {Colors} from '../constants/colors';
 const Timezone = () => {
   return (
     <View style={styles.container}>
-      <Image source={require('../../assets/img/Solid.png')} />
-      <TextAtom style={styles.text}>{getTimezone()}</TextAtom>
+      <Image source={require('../../assets/img/globe.png')} />
+      <TextAtom>{getTimezone()}</TextAtom>
     </View>
   );
 };
@@ -27,8 +27,5 @@ const styles = StyleSheet.create({
     borderBottomColor: Colors.grayBorder,
     borderWidth: 1,
     marginTop: 30,
-  },
-  text: {
-    color: Colors.primary,
   },
 });

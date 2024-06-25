@@ -1,5 +1,6 @@
 import React from 'react';
 import {Text, StyleSheet, TextProps} from 'react-native';
+import {Colors} from '../constants/colors';
 
 const fontMappings = {
   lazzer: {
@@ -39,6 +40,7 @@ const TextAtom: React.FC<TextAtomProps> = ({
 const styles = StyleSheet.create({
   text: {
     fontSize: 16,
+    color: Colors.primary,
   },
 });
 
