@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {Dimensions} from 'react-native';
 import {CalendarList, DateData} from 'react-native-calendars';
 import {format} from 'date-fns';
 import CalendarHeader from '../molecules/CalendarHeader';
 import CalendarDay from '../molecules/CalendarDay';
 import {Colors} from '../constants/colors';
+import {DayProps} from 'react-native-calendars/src/calendar/day';
 
 interface CalendarProps {
   onSelectDate: (date: Date) => void;
@@ -17,6 +18,24 @@ const Calendar: React.FC<CalendarProps> = ({onSelectDate}) => {
     setSelectedDate(day.dateString);
     onSelectDate(new Date(day.dateString));
   };
+
+  const onDayPress = useCallback((date: DateData) => {
+    setSelectedDate(date.dateString);
+  }, []);
+
+  const dayComponent = useCallback(
+    (
+      props: React.JSX.IntrinsicAttributes &
+        DayProps & {date?: DateData | undefined},
+    ) => (
+      <CalendarDay
+        key={props.date?.timestamp}
+        {...props}
+        onDayPress={onDayPress}
+      />
+    ),
+    [onDayPress],
+  );
 
   return (
     <>
@@ -35,7 +54,7 @@ const Calendar: React.FC<CalendarProps> = ({onSelectDate}) => {
         //   },
         // }}
         style={{height: 320}}
-        dayComponent={CalendarDay as any}
+        dayComponent={dayComponent}
         hideDayNames
         theme={{
           textMonthFontFamily: 'Lazzer-Semibold',
