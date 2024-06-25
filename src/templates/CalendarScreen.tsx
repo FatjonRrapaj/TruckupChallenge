@@ -4,7 +4,6 @@ import Calendar from '../organisms/Calendar';
 import BottomSheet from '../organisms/BottomSheet';
 import TextAtom from '../atoms/TextAtom';
 import Timezone from '../molecules/Timezone';
-import {Colors} from '../constants/colors';
 import {DateData} from 'react-native-calendars';
 
 const CalendarScreen: React.FC = () => {

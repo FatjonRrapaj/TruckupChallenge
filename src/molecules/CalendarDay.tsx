@@ -50,6 +50,7 @@ const CalendarDay: React.FC<
     return (
       <TouchableOpacity
         activeOpacity={0.7}
+        disabled={isBeforeDay && !isTodayDay}
         onPress={() => onDayPress(date)}
         style={[styles.container, {width: dayWidth}]}>
         <View style={innerDayContainerStyle as ViewStyle}>
