@@ -40,15 +40,14 @@ const Calendar: React.FC<CalendarProps> = ({onSelectDate}) => {
         theme={{
           todayTextColor: '#fff',
           todayBackgroundColor: '#FF5F5F',
-          //   textDayFontFamily: 'YourFontFamily',
-          //   textMonthFontFamily: 'YourFontFamily',
-          //   textDayHeaderFontFamily: 'YourFontFamily',
+          textDayFontFamily: 'Lazzer-Semibold',
+          textMonthFontFamily: 'Lazzer-Semibold',
+          textDayHeaderFontFamily: 'Lazzer-Semibold',
           backgroundColor: '#010203',
           calendarBackground: '#010203',
           monthTextColor: '#F4F4F4',
           textMonthFontSize: 16,
           textMonthFontWeight: 600,
-          textMonthFontFamily: 'Lazzer',
         }}
         scrollEnabled
         pagingEnabled

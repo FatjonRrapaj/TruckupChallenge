@@ -1,12 +1,13 @@
 import * as React from 'react';
-import {Text, View, StyleSheet, Image} from 'react-native';
+import {View, StyleSheet, Image} from 'react-native';
 import {getTimezone} from '../utils/date';
+import TextAtom from '../atoms/TextAtom';
 
 const Timezone = () => {
   return (
     <View style={styles.container}>
-      <Image source={require('../../assets/Solid.png')} />
-      <Text style={{color: 'white'}}>{getTimezone()}</Text>
+      <Image source={require('../../assets/img/Solid.png')} />
+      <TextAtom style={{color: 'white'}}>{getTimezone()}</TextAtom>
     </View>
   );
 };
