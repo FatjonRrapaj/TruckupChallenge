@@ -18,11 +18,8 @@ const Calendar: React.FC<CalendarProps> = ({onSelectDate}) => {
     onSelectDate(new Date(day.dateString));
   };
 
-  const screenWidth = Dimensions.get('screen').width;
-  const calendarWidth = screenWidth - 24 * 2;
-
   return (
-    <View style={styles.calendar}>
+    <>
       <CalendarHeader />
       <CalendarList
         current={format(new Date(), 'yyyy-MM-dd')}
@@ -38,18 +35,20 @@ const Calendar: React.FC<CalendarProps> = ({onSelectDate}) => {
         //   },
         // }}
         style={{height: 320}}
-        dayComponent={CalendarDay}
+        dayComponent={CalendarDay as any}
         hideDayNames
         theme={{
           todayTextColor: '#fff',
           todayBackgroundColor: '#FF5F5F',
-
           //   textDayFontFamily: 'YourFontFamily',
           //   textMonthFontFamily: 'YourFontFamily',
           //   textDayHeaderFontFamily: 'YourFontFamily',
           backgroundColor: '#010203',
           calendarBackground: '#010203',
-          monthTextColor: '#DFDFDF',
+          monthTextColor: '#F4F4F4',
+          textMonthFontSize: 16,
+          textMonthFontWeight: 600,
+          textMonthFontFamily: 'Lazzer',
         }}
         scrollEnabled
         pagingEnabled
@@ -58,14 +57,8 @@ const Calendar: React.FC<CalendarProps> = ({onSelectDate}) => {
         horizontal={false}
         calendarHeight={320}
       />
-    </View>
+    </>
   );
 };
-
-const styles = StyleSheet.create({
-  calendar: {
-    flex: 1,
-  },
-});
 
 export default Calendar;

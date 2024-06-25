@@ -3,6 +3,7 @@ import {View, StyleSheet} from 'react-native';
 import Calendar from '../organisms/Calendar';
 import BottomSheet from '../organisms/BottomSheet';
 import TextAtom from '../atoms/TextAtom';
+import Timezone from '../molecules/Timezone';
 
 const CalendarScreen: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -28,6 +29,7 @@ const CalendarScreen: React.FC = () => {
     <View style={styles.container}>
       <TextAtom style={styles.screenTitle}>Availability</TextAtom>
       <Calendar onSelectDate={handleSelectDate} />
+      <Timezone />
       {selectedDate && (
         <BottomSheet
           visible={bottomSheetVisible}
