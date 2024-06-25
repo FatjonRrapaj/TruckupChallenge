@@ -39,8 +39,8 @@ const Calendar: React.FC<CalendarProps> = ({onSelectDate}) => {
         hideDayNames
         theme={{
           textMonthFontFamily: 'Lazzer-Semibold',
-          backgroundColor: Colors.grayBackground,
-          calendarBackground: Colors.grayBackground,
+          backgroundColor: Colors.darkBackground,
+          calendarBackground: Colors.darkBackground,
           monthTextColor: Colors.primary,
           textMonthFontSize: 16,
           textMonthFontWeight: 600,
