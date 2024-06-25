@@ -28,7 +28,7 @@ const BottomSheet: React.FC<BottomSheetProps> = ({date, onClose, onSave}) => {
         </View>
         <View style={styles.timePicker}>
           <TextAtom style={styles.startEndWork}>End work by:</TextAtom>
-          {/* <TimePicker selectedTime={endTime} onSelectTime={setEndTime} /> */}
+          <TimePicker selectedTime={endTime} onSelectTime={setEndTime} />
         </View>
         <View style={styles.bottomSheetFooter}>
           <ButtonAtom
@@ -49,12 +49,12 @@ const styles = StyleSheet.create({
   },
   sheet: {
     backgroundColor: Colors.grayBackgroundNonTransparent,
-    height: '55%',
     justifyContent: 'space-between',
   },
   startEndWork: {
     marginLeft: 20,
     fontSize: 14,
+    marginTop: 20,
   },
   timePicker: {},
   background: {

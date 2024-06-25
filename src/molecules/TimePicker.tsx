@@ -78,7 +78,7 @@ const TimePicker: React.FC<TimePickerProps> = ({
 };
 
 const styles = StyleSheet.create({
-  container: {marginTop: 24},
+  container: {marginVertical: 24},
   item: {
     width: ITEM_WIDTH,
     justifyContent: 'center',
