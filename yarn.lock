@@ -3018,6 +3018,7 @@ __metadata:
     react-native: 0.74.2
     react-native-calendars: ^1.1305.0
     react-native-haptic-feedback: ^2.2.0
+    react-native-swipe-gesture-handler: ^1.0.6
     react-test-renderer: 18.2.0
     typescript: 5.0.4
   languageName: unknown
@@ -8003,6 +8004,16 @@ __metadata:
   peerDependencies:
     react-native: ">=0.60.0"
   checksum: e7ce6b303a799dc7fd1c5851379b555b65052c3ef7fefe836c7881f125e4057134462554a996762e67ecc7f01e82e45dc3bcad17cc232b53511006160d5f98ed
+  languageName: node
+  linkType: hard
+
+"react-native-swipe-gesture-handler@npm:^1.0.6":
+  version: 1.0.6
+  resolution: "react-native-swipe-gesture-handler@npm:1.0.6"
+  peerDependencies:
+    react: ^18.0.0
+    react-native: ^0.69.0
+  checksum: 2760e51d75519c7dfbdef470d39b91d05d699935cd219e8a1ccb907f751825a83e9e749d1591cb4ae0a2a10c660f320863aec6136662c09e149793e16c251c2d
   languageName: node
   linkType: hard
 

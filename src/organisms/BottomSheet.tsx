@@ -24,11 +24,11 @@ const BottomSheet: React.FC<BottomSheetProps> = ({date, onClose, onSave}) => {
         <BottomSheetHeader date={date} onClose={onClose} />
         <View style={styles.timePicker}>
           <TextAtom style={styles.startEndWork}>Start work at:</TextAtom>
-          <TimePicker selectedTime={startTime} onSelectTime={setStartTime} />
+          {/* <TimePicker selectedTime={startTime} onSelectTime={setStartTime} /> */}
         </View>
         <View style={styles.timePicker}>
           <TextAtom style={styles.startEndWork}>End work by:</TextAtom>
-          <TimePicker selectedTime={endTime} onSelectTime={setEndTime} />
+          {/* <TimePicker selectedTime={endTime} onSelectTime={setEndTime} /> */}
         </View>
         <View style={styles.bottomSheetFooter}>
           <ButtonAtom

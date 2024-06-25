@@ -4,6 +4,7 @@ import {format} from 'date-fns';
 import TextAtom from '../atoms/TextAtom';
 import {DateData} from 'react-native-calendars';
 import {Colors} from '../constants/colors';
+import {SwipeGesture} from 'react-native-swipe-gesture-handler';
 
 interface BottomSheetHeaderProps {
   date: DateData;
@@ -13,22 +14,31 @@ interface BottomSheetHeaderProps {
 const BottomSheetHeader: React.FC<BottomSheetHeaderProps> = ({
   date,
   onClose,
-}) => (
-  <View style={styles.container}>
-    <View style={styles.bar} />
-    <View style={styles.horizontalContainer}>
-      <TextAtom fontWeight="bold" style={styles.title}>
-        Set availability on {format(date.timestamp, 'MMM dd, yyyy')}
-      </TextAtom>
-      <TouchableOpacity
-        activeOpacity={0.7}
-        onPress={onClose}
-        style={styles.closeButton}>
-        <Image source={require('../../assets/img/closeX.png')} />
-      </TouchableOpacity>
-    </View>
-  </View>
-);
+}) => {
+  const onSwipePerformed = (action: string) => {
+    if (action === 'down') {
+      onClose();
+    }
+  };
+  return (
+    <SwipeGesture onSwipePerformed={onSwipePerformed}>
+      <View style={styles.container}>
+        <View style={styles.bar} />
+        <View style={styles.horizontalContainer}>
+          <TextAtom fontWeight="bold" style={styles.title}>
+            Set availability on {format(date.timestamp, 'MMM dd, yyyy')}
+          </TextAtom>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={onClose}
+            style={styles.closeButton}>
+            <Image source={require('../../assets/img/closeX.png')} />
+          </TouchableOpacity>
+        </View>
+      </View>
+    </SwipeGesture>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
