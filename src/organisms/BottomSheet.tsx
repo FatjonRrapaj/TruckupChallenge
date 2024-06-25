@@ -11,11 +11,19 @@ interface BottomSheetProps {
   date: DateData;
   onClose: () => void;
   onSave: (date: DateData, startTime: string, endTime: string) => void;
+  selectedStartTime: string | null;
+  selectedEndTime: string | null;
 }
 
-const BottomSheet: React.FC<BottomSheetProps> = ({date, onClose, onSave}) => {
-  const [startTime, setStartTime] = useState('6:00 am');
-  const [endTime, setEndTime] = useState('8:00 pm');
+const BottomSheet: React.FC<BottomSheetProps> = ({
+  date,
+  selectedEndTime,
+  selectedStartTime,
+  onClose,
+  onSave,
+}) => {
+  const [startTime, setStartTime] = useState(selectedStartTime ?? '6:00 am');
+  const [endTime, setEndTime] = useState(selectedEndTime ?? '8:00 pm');
 
   return (
     <Modal visible animationType="slide" transparent onRequestClose={onClose}>

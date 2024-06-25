@@ -7,11 +7,18 @@ import CalendarDay from '../molecules/CalendarDay';
 import {Colors} from '../constants/colors';
 import {DayProps} from 'react-native-calendars/src/calendar/day';
 
-interface CalendarProps {
-  onSelectDate: (date: DateData) => void;
+interface Shift {
+  date: DateData | null;
+  startTime: string | null;
+  endTime: string | null;
 }
 
-const Calendar: React.FC<CalendarProps> = ({onSelectDate}) => {
+interface CalendarProps {
+  onSelectDate: (date: DateData) => void;
+  savedShift: Shift;
+}
+
+const Calendar: React.FC<CalendarProps> = ({onSelectDate, savedShift}) => {
   const onDayPress = useCallback(
     (date: DateData) => {
       onSelectDate(date);
@@ -25,12 +32,13 @@ const Calendar: React.FC<CalendarProps> = ({onSelectDate}) => {
         DayProps & {date?: DateData | undefined},
     ) => (
       <CalendarDay
+        isSelectedDate={savedShift.date?.dateString === props.date?.dateString}
         key={props.date?.timestamp}
         {...props}
         onDayPress={onDayPress}
       />
     ),
-    [onDayPress],
+    [onDayPress, savedShift],
   );
 
   return (
@@ -44,11 +52,6 @@ const Calendar: React.FC<CalendarProps> = ({onSelectDate}) => {
         onDayPress={onDayPress}
         calendarWidth={Dimensions.get('screen').width}
         disableArrowLeft={true}
-        // markedDates={{
-        //   [selectedDate || '']: {
-        //     selected: true,
-        //   },
-        // }}
         style={styles.calendar}
         dayComponent={dayComponent}
         hideDayNames
