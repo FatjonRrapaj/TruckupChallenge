@@ -2,6 +2,7 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import TextAtom from '../atoms/TextAtom';
 import {calculateCalendarDimensions} from '../utils/calendarDimensions';
+import {Colors} from '../constants/colors';
 
 const CalendarHeader: React.FC = () => {
   const {calendarWidth, dayWidth} = calculateCalendarDimensions();
@@ -28,8 +29,8 @@ const CalendarHeader: React.FC = () => {
 
 const styles = StyleSheet.create({
   outerContainer: {
-    borderTopColor: '#F4F4F424',
-    borderBottomColor: '#F4F4F424',
+    borderTopColor: Colors.grayBorder,
+    borderBottomColor: Colors.grayBorder,
     borderWidth: 1,
     paddingHorizontal: 20,
   },
@@ -40,7 +41,6 @@ const styles = StyleSheet.create({
   },
   dayContainer: {justifyContent: 'center', alignItems: 'center'},
   day: {
-    fontWeight: '600',
     color: '#AAAAAB',
     fontSize: 14,
   },

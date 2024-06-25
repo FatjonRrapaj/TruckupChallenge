@@ -1,6 +1,7 @@
 import React from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
 import CalendarScreen from './src/templates/CalendarScreen';
+import {Colors} from './src/constants/colors';
 
 function App(): React.JSX.Element {
   return (
@@ -12,7 +13,7 @@ function App(): React.JSX.Element {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#010203',
+    backgroundColor: Colors.darkBackground,
     flex: 1,
   },
 });

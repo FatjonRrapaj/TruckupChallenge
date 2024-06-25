@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, Dimensions} from 'react-native';
+import {Dimensions} from 'react-native';
 import {CalendarList, DateData} from 'react-native-calendars';
 import {format} from 'date-fns';
 import CalendarHeader from '../molecules/CalendarHeader';
-import TextAtom from '../atoms/TextAtom';
 import CalendarDay from '../molecules/CalendarDay';
+import {Colors} from '../constants/colors';
 
 interface CalendarProps {
   onSelectDate: (date: Date) => void;
 }
 
 const Calendar: React.FC<CalendarProps> = ({onSelectDate}) => {
-  const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  const [_, setSelectedDate] = useState<string | null>(null);
 
   const handleDayPress = (day: DateData) => {
     setSelectedDate(day.dateString);
@@ -38,14 +38,10 @@ const Calendar: React.FC<CalendarProps> = ({onSelectDate}) => {
         dayComponent={CalendarDay as any}
         hideDayNames
         theme={{
-          todayTextColor: '#fff',
-          todayBackgroundColor: '#FF5F5F',
-          textDayFontFamily: 'Lazzer-Semibold',
           textMonthFontFamily: 'Lazzer-Semibold',
-          textDayHeaderFontFamily: 'Lazzer-Semibold',
-          backgroundColor: '#010203',
-          calendarBackground: '#010203',
-          monthTextColor: '#F4F4F4',
+          backgroundColor: Colors.grayBackground,
+          calendarBackground: Colors.grayBackground,
+          monthTextColor: Colors.primary,
           textMonthFontSize: 16,
           textMonthFontWeight: 600,
         }}

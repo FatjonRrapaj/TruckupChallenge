@@ -2,12 +2,13 @@ import * as React from 'react';
 import {View, StyleSheet, Image} from 'react-native';
 import {getTimezone} from '../utils/date';
 import TextAtom from '../atoms/TextAtom';
+import {Colors} from '../constants/colors';
 
 const Timezone = () => {
   return (
     <View style={styles.container}>
       <Image source={require('../../assets/img/Solid.png')} />
-      <TextAtom style={{color: 'white'}}>{getTimezone()}</TextAtom>
+      <TextAtom style={styles.text}>{getTimezone()}</TextAtom>
     </View>
   );
 };
@@ -21,10 +22,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 6,
     paddingVertical: 12,
-    backgroundColor: '#55555650',
-    borderTopColor: '#F4F4F424',
-    borderBottomColor: '#F4F4F424',
+    backgroundColor: Colors.grayBackground,
+    borderTopColor: Colors.grayBorder,
+    borderBottomColor: Colors.grayBorder,
     borderWidth: 1,
     marginTop: 30,
+  },
+  text: {
+    color: Colors.primary,
   },
 });

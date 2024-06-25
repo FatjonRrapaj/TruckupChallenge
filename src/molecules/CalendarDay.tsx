@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   View,
-  Text,
   StyleSheet,
   TouchableOpacity,
   ViewStyle,
@@ -9,6 +8,8 @@ import {
 } from 'react-native';
 import {format, isToday, isBefore} from 'date-fns';
 import {DateData} from 'react-native-calendars';
+import {Colors} from '../constants/colors';
+import TextAtom from '../atoms/TextAtom';
 
 interface CalendarDayProps {
   date?: DateData;
@@ -18,8 +19,8 @@ interface CalendarDayProps {
 
 const CalendarDay: React.FC<CalendarDayProps> = ({
   date,
-  onSelect,
-  isSelected,
+  // onSelect,
+  // isSelected,
 }) => {
   if (!date) {
     return null;
@@ -48,9 +49,9 @@ const CalendarDay: React.FC<CalendarDayProps> = ({
   return (
     <TouchableOpacity style={[styles.container, {width: dayWidth}]}>
       <View style={innerDayContainerStyle as ViewStyle}>
-        <Text style={dayTextStyle as ViewStyle}>
+        <TextAtom style={dayTextStyle as ViewStyle}>
           {format(date.timestamp, 'd')}
-        </Text>
+        </TextAtom>
       </View>
     </TouchableOpacity>
   );
@@ -70,24 +71,20 @@ const styles = StyleSheet.create({
     borderRadius: 35 / 2,
   },
   todayContainer: {
-    backgroundColor: 'red',
-  },
-  pastDay: {
-    color: 'grey',
+    backgroundColor: Colors.primaryRed,
   },
   selectedDay: {
-    backgroundColor: 'blue',
+    backgroundColor: Colors.secondary,
   },
   text: {
     fontSize: 16,
     lineHeight: 16,
-    fontWeight: '600',
-    color: 'white',
+    color: Colors.primary,
   },
   beforeText: {
-    color: '#F4F4F432',
+    color: Colors.primaryDark,
   },
-  todayText: {color: 'white'},
+  todayText: {color: Colors.primary},
 });
 
 export default CalendarDay;

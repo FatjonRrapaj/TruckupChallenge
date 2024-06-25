@@ -4,6 +4,7 @@ import Calendar from '../organisms/Calendar';
 import BottomSheet from '../organisms/BottomSheet';
 import TextAtom from '../atoms/TextAtom';
 import Timezone from '../molecules/Timezone';
+import {Colors} from '../constants/colors';
 
 const CalendarScreen: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -27,7 +28,9 @@ const CalendarScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <TextAtom style={styles.screenTitle}>Availability</TextAtom>
+      <TextAtom fontWeight="bold" style={styles.screenTitle}>
+        Availability
+      </TextAtom>
       <Calendar onSelectDate={handleSelectDate} />
       <Timezone />
       {selectedDate && (
@@ -48,11 +51,10 @@ const styles = StyleSheet.create({
   },
   screenTitle: {
     marginHorizontal: 'auto',
-    color: 'white',
+    color: Colors.primary,
     marginBottom: 30,
     marginTop: 18,
     fontSize: 16,
-    fontWeight: '700',
     lineHeight: 16,
   },
 });

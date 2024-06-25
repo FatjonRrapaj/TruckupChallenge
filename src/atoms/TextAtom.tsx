@@ -18,7 +18,7 @@ const fontMappings = {
 
 interface TextAtomProps extends TextProps {
   fontFamily?: 'lazzer' | 'firaCode';
-  fontWeight: 'regular' | 'bold' | 'light' | 'semiBold';
+  fontWeight?: 'regular' | 'bold' | 'light' | 'semiBold';
 }
 
 const TextAtom: React.FC<TextAtomProps> = ({
