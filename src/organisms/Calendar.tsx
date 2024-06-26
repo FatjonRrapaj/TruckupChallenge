@@ -56,7 +56,7 @@ const Calendar: React.FC<CalendarProps> = ({onSelectDate, savedShift}) => {
           calendarBackground: Colors.darkBackground,
           monthTextColor: Colors.primary,
           textMonthFontSize: 16,
-          textMonthFontWeight: 600,
+          textMonthFontWeight: '600',
         }}
         scrollEnabled
         pagingEnabled
