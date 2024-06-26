@@ -22,7 +22,7 @@ This is a React Native Calendar application with features such as a time picker,
 
 ## Screen Recording
 
-Watch the screen recording [here](path/to/screenrecord.mp4).
+Watch the screen recording [here](./assets/demo/demoVideo.mov).
 
 ## Installation
 
@@ -31,7 +31,7 @@ To run this project, follow these steps:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/FatjonRrapaj/TruckupChallenge.git
 cd your-repo
 ```
 
@@ -54,3 +54,8 @@ for Android
 ```
 yearn android
 ```
+
+### Note
+
+The Swipe down to close Bottom Swipe Modal works only if swiped on the Bottom Swipe Header.
+Sorry for that, I am really pressed for time, did not use RN bottom sheet or anything, just the Plain React Native Modal
