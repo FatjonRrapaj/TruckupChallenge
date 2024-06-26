@@ -7,12 +7,6 @@ import CalendarDay from '../molecules/CalendarDay';
 import {Colors} from '../constants/colors';
 import {DayProps} from 'react-native-calendars/src/calendar/day';
 
-interface Shift {
-  date: DateData | null;
-  startTime: string | null;
-  endTime: string | null;
-}
-
 interface CalendarProps {
   onSelectDate: (date: DateData) => void;
   savedShift: Shift;

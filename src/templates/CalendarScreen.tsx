@@ -6,12 +6,6 @@ import TextAtom from '../atoms/TextAtom';
 import Timezone from '../molecules/Timezone';
 import {DateData} from 'react-native-calendars';
 
-interface Shift {
-  date: DateData | null;
-  startTime: string | null;
-  endTime: string | null;
-}
-
 const CalendarScreen: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<DateData | null>(null);
   const [savedShift, setSavedShift] = useState<Shift>({
@@ -20,12 +14,8 @@ const CalendarScreen: React.FC = () => {
     endTime: null,
   });
 
-  const handleSaveTime = (
-    date: DateData,
-    startTime: string,
-    endTime: string,
-  ) => {
-    setSavedShift({date, startTime, endTime});
+  const handleSaveTime = (shift: Shift) => {
+    setSavedShift(shift);
   };
 
   return (
@@ -43,8 +33,7 @@ const CalendarScreen: React.FC = () => {
           date={selectedDate}
           onClose={() => setSelectedDate(null)}
           onSave={handleSaveTime}
-          selectedStartTime={savedShift.startTime}
-          selectedEndTime={savedShift.endTime}
+          savedShift={savedShift}
         />
       )}
     </View>

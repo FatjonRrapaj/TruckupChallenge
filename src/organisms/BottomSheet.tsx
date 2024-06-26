@@ -1,29 +1,37 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, Modal} from 'react-native';
+import {View, StyleSheet, Modal, Image} from 'react-native';
 import BottomSheetHeader from '../molecules/BottomSheetHeader';
 import TimePicker from '../molecules/TimePicker';
 import ButtonAtom from '../molecules/ButtonMolecule';
 import TextAtom from '../atoms/TextAtom';
 import {DateData} from 'react-native-calendars';
 import {Colors} from '../constants/colors';
+import {compareTimes} from '../utils/date';
 
 interface BottomSheetProps {
   date: DateData;
   onClose: () => void;
-  onSave: (date: DateData, startTime: string, endTime: string) => void;
-  selectedStartTime: string | null;
-  selectedEndTime: string | null;
+  onSave: (shift: Shift) => void;
+  savedShift: Shift;
 }
 
 const BottomSheet: React.FC<BottomSheetProps> = ({
   date,
-  selectedEndTime,
-  selectedStartTime,
+  savedShift,
   onClose,
   onSave,
 }) => {
-  const [startTime, setStartTime] = useState(selectedStartTime ?? '6:00 am');
-  const [endTime, setEndTime] = useState(selectedEndTime ?? '8:00 pm');
+  const hasOpenedSelectedDay = savedShift.date?.dateString === date.dateString;
+  const hasStartTime = hasOpenedSelectedDay && savedShift.startTime;
+  const hasEndTime = hasOpenedSelectedDay && savedShift.endTime;
+  const [startTime, setStartTime] = useState(
+    hasStartTime ? savedShift.startTime : '6:00 am',
+  );
+  const [endTime, setEndTime] = useState(
+    hasEndTime ? savedShift.endTime : '8:00 pm',
+  );
+
+  const isIntervalCorrect = compareTimes(startTime!, endTime!) < 0;
 
   return (
     <Modal visible animationType="slide" transparent onRequestClose={onClose}>
@@ -32,16 +40,35 @@ const BottomSheet: React.FC<BottomSheetProps> = ({
         <BottomSheetHeader date={date} onClose={onClose} />
         <View style={styles.timePicker}>
           <TextAtom style={styles.startEndWork}>Start work at:</TextAtom>
-          <TimePicker selectedTime={startTime} onSelectTime={setStartTime} />
+          <TimePicker selectedTime={startTime!} onSelectTime={setStartTime} />
         </View>
         <View style={styles.timePicker}>
           <TextAtom style={styles.startEndWork}>End work by:</TextAtom>
-          <TimePicker selectedTime={endTime} onSelectTime={setEndTime} />
+          <TimePicker selectedTime={endTime!} onSelectTime={setEndTime} />
         </View>
+
+        {!isIntervalCorrect && (
+          <View style={styles.warningContainer}>
+            <Image
+              style={styles.img}
+              source={require('../../assets/img/warning.png')}
+            />
+            <TextAtom
+              fontFamily="firaCode"
+              fontWeight="regular"
+              style={styles.warningText}>
+              Select an end time that’s later than your start time.
+            </TextAtom>
+          </View>
+        )}
         <View style={styles.bottomSheetFooter}>
           <ButtonAtom
+            disabled={!isIntervalCorrect}
             title="Set time"
-            onPress={() => onSave(date, startTime, endTime)}
+            onPress={() => {
+              onSave({date, startTime, endTime});
+              onClose();
+            }}
           />
         </View>
       </View>
@@ -74,6 +101,18 @@ const styles = StyleSheet.create({
     borderTopColor: Colors.grayBorder,
     borderTopWidth: 1,
   },
+  warningContainer: {
+    margin: 20,
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 10,
+  },
+  warningText: {
+    color: Colors.primaryRed,
+    fontSize: 14,
+    lineHeight: 20,
+  },
+  img: {marginTop: 6},
 });
 
 export default BottomSheet;
