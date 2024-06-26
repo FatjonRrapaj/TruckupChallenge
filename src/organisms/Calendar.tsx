@@ -1,11 +1,12 @@
 import React, {useCallback} from 'react';
 import {Dimensions, StyleSheet} from 'react-native';
 import {CalendarList, DateData} from 'react-native-calendars';
+import {DayProps} from 'react-native-calendars/src/calendar/day';
+
 import {format} from 'date-fns';
 import CalendarHeader from '../molecules/CalendarHeader';
 import CalendarDay from '../molecules/CalendarDay';
 import {Colors} from '../constants/colors';
-import {DayProps} from 'react-native-calendars/src/calendar/day';
 
 interface CalendarProps {
   onSelectDate: (date: DateData) => void;

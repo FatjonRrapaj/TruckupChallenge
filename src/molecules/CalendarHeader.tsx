@@ -1,8 +1,9 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
+
 import TextAtom from '../atoms/TextAtom';
-import {calculateCalendarDimensions} from '../utils/calendarDimensions';
 import {Colors} from '../constants/colors';
+import {calculateCalendarDimensions} from '../utils/calendarDimensions';
 
 const CalendarHeader: React.FC = () => {
   const {calendarWidth, dayWidth} = calculateCalendarDimensions();

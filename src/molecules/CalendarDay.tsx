@@ -8,9 +8,10 @@ import {
 } from 'react-native';
 import {format, isToday, isBefore} from 'date-fns';
 import {DateData} from 'react-native-calendars';
+import {DayProps} from 'react-native-calendars/src/calendar/day';
+
 import {Colors} from '../constants/colors';
 import TextAtom from '../atoms/TextAtom';
-import {DayProps} from 'react-native-calendars/src/calendar/day';
 
 const CalendarDay: React.FC<
   DayProps & {

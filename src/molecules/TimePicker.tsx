@@ -2,6 +2,7 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import HapticFeedback from 'react-native-haptic-feedback';
 import HorizontalPicker from '@vseslav/react-native-horizontal-picker';
+
 import TextAtom from '../atoms/TextAtom';
 import {Colors} from '../constants/colors';
 

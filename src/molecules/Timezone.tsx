@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {View, StyleSheet, Image} from 'react-native';
+
 import {getTimezone} from '../utils/date';
 import TextAtom from '../atoms/TextAtom';
 import {Colors} from '../constants/colors';

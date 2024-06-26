@@ -6,6 +6,7 @@ import {
   StyleProp,
   ViewStyle,
 } from 'react-native';
+
 import {Colors} from '../constants/colors';
 import TextAtom from '../atoms/TextAtom';
 

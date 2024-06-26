@@ -1,5 +1,6 @@
 import React from 'react';
 import {Text, StyleSheet, TextProps} from 'react-native';
+
 import {Colors} from '../constants/colors';
 
 const fontMappings = {

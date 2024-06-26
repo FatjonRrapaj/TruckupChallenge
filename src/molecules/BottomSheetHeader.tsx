@@ -1,10 +1,11 @@
 import React from 'react';
 import {View, StyleSheet, TouchableOpacity, Image} from 'react-native';
-import {format} from 'date-fns';
-import TextAtom from '../atoms/TextAtom';
-import {DateData} from 'react-native-calendars';
-import {Colors} from '../constants/colors';
 import {SwipeGesture} from 'react-native-swipe-gesture-handler';
+import {DateData} from 'react-native-calendars';
+import {format} from 'date-fns';
+
+import TextAtom from '../atoms/TextAtom';
+import {Colors} from '../constants/colors';
 
 interface BottomSheetHeaderProps {
   date: DateData;
