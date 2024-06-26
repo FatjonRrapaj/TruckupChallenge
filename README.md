@@ -41,9 +41,14 @@ cd your-repo
 yarn install
 ```
 
-3. Run the Application
+3. Install the necessary pods (iOS only):
 
-for iOS
+```
+npx pod-install
+
+```
+
+4. Run the application:
 
 ```
 yarn ios
@@ -55,7 +60,9 @@ for Android
 yearn android
 ```
 
-### Note
+### Notes
 
-The Swipe down to close Bottom Swipe Modal works only if swiped on the Bottom Swipe Header.
-Sorry for that, I am really pressed for time, did not use RN bottom sheet or anything, just the Plain React Native Modal
+1. The Swipe down to close Bottom Swipe Modal works only if swiped on the Bottom Swipe Header.
+   Sorry for that, I am really pressed for time, did not use RN bottom sheet or anything, just the Plain React Native Modal
+
+2. The libraries used both for handling the Modal swipe and for the horizontal time selector are very unpopular, they were just easy to use. In a production App I would not have picked those but much more consolidated ones. This was only to finish the challenge on time..
