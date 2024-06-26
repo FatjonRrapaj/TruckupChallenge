@@ -51,23 +51,13 @@
 	<array>
 		<string>FiraCode-Bold.ttf</string>
 		<string>FiraCode-Light.ttf</string>
-		<string>FiraCode-Medium.ttf</string>
 		<string>FiraCode-Regular.ttf</string>
 		<string>FiraCode-SemiBold.ttf</string>
 		<string>Lazzer-Bold.ttf</string>
-		<string>Lazzer-BoldItalic.ttf</string>
 		<string>Lazzer-Heavy.ttf</string>
-		<string>Lazzer-HeavyItalic.ttf</string>
 		<string>Lazzer-Light.ttf</string>
-		<string>Lazzer-LightItalic.ttf</string>
-		<string>Lazzer-Medium.ttf</string>
-		<string>Lazzer-MediumItalic.ttf</string>
 		<string>Lazzer-Regular.ttf</string>
-		<string>Lazzer-RegularItalic.ttf</string>
 		<string>Lazzer-SemiBold.ttf</string>
-		<string>Lazzer-SemiBoldItalic.ttf</string>
-		<string>Lazzer-Thin.ttf</string>
-		<string>Lazzer-ThinItalic.ttf</string>
 	</array>
 </dict>
 </plist>
